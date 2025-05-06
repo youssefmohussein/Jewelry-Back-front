@@ -1,0 +1,26 @@
+{
+  "name": "jewelry-back-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youssefmohussein/Jewelry-Back-front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youssefmohussein/Jewelry-Back-front/issues"
+  },
+  "homepage": "https://github.com/youssefmohussein/Jewelry-Back-front#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.6",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.1",
+    "nodemon": "^3.1.10",
+    "pug": "^3.0.3"
+  }
+}

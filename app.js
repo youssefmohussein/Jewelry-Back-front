@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 })
 
 
-mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/")
     .then(() => {
         app.listen(port, () => {
             console.log('http://localhost:8000');

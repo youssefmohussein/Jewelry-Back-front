@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.port || 8000;
 const mongoose = require('mongoose');
 const ProductRoutes = require('./routes/ProductRoutes');
+const UserRoutes = require('./routes/UserRoutes');
 app.use(express.json());
 
 // Basic route
@@ -10,10 +11,9 @@ app.get('/', (req, res) => {
     res.send('API Running: Product Management');
 });
 
-
-
 // Register routes
 app.use('/products', ProductRoutes);
+app.use('/users', UserRoutes);
 
 mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/")
     .then(() => {

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/youssefmohussein/Jewelry-Back-front#readme",
   "dependencies": {
     "bootstrap": "^5.3.6",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.1",

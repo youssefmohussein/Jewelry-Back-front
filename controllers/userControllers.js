@@ -16,6 +16,41 @@ exports.createUsers = async (req, res) => {
   }
 };
 
+exports.registerUser = async (req, res) => {
+  try {
+    const { name, Email, password } = req.body;
+
+    // Check if email already exists
+    const existingUser = await User.findOne({ Email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+
+    const newUser = new User({ name, Email, password });
+    await newUser.save();
+    res.status(201).send("User registered successfully");
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+exports.loginUser = async (req, res) => {
+  try {
+    const { Email, password } = req.body;
+    const user = await User.findOne({ Email });
+
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    res.status(200).json({ message: "Login successful", role: user.role || "user" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
 // Update
 exports.updateUsers = async (req, res) => {
   try {

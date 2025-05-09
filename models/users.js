@@ -11,7 +11,7 @@ Id:{
         // uppercase: true
         
     },
-   
+
 //     productSchema.(autoIncrement.plugin, {
 //     model: 'Product', // name of the model
 //     field: 'Id',
@@ -22,12 +22,12 @@ Id:{
     password:{
         type:String,
         required:true,
-          validate: {
+        validate: {
     validator: function (v) {
-      return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v);
+        return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v);
     },// lookahead
     message: props => `Password must contain at least one letter, one number, and be at least 8 characters long.`
-  }
+}
     },
 
     Email:{
@@ -54,7 +54,7 @@ Id:{
     type: String,
     enum: ['admin', 'customer'],
     default: 'customer',
-     required: false
+    required: false
     },
 
 })

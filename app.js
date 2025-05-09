@@ -22,6 +22,4 @@ mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaee
         })
     }).catch((err) => {
         console.log(err)
-    });
-
-    
+});

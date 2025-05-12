@@ -16,4 +16,10 @@ router.get('/forgetpassword',(req,res)=>{
     res.render('reset');
 });
 
+router.get('/home', (req, res) => {
+  // Render the 'homePage' EJS file
+  res.render('homePage');  
+});
+
+
 module.exports = router;

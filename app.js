@@ -25,6 +25,10 @@ app.use('/users', UserRoutes);
 app.use('/', mainPage);
 
 
+app.get('/home', (req, res) => {
+  res.render('homePage');  // Render 'homePage.ejs' for customers
+});
+
 
 // MongoDB connection
 mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")

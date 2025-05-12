@@ -35,6 +35,7 @@ exports.registerUser = async (req, res) => {
 };
 
 
+
 exports.loginUser = async (req, res) => {
   try {
     const { Email, password } = req.body;
@@ -43,8 +44,12 @@ exports.loginUser = async (req, res) => {
     if (!user || user.password !== password) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    
-    res.status(200).json({ message: "Login successful", role: user.role || "user" });
+
+    // Send the user's role along with a success message
+    res.status(200).json({
+      message: "Login successful!",
+      role: user.Role // Make sure the 'role' is sent as part of the response
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

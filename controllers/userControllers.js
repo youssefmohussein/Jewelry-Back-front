@@ -103,3 +103,34 @@ exports.deleteUsers = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.resetPassword = async (req, res) => {
+    try {
+        const { Email, password, confirmPassword } = req.body;
+
+        // Check if email exists in the database
+        const user = await User.findOne({ Email });
+        if (!user) {
+            return res.status(404).json({ message: "User with this email not found" });
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
+        }
+
+        // Validate password (simple check for 6 characters or more)
+        const isValidPassword = password.length >= 6;
+        if (!isValidPassword) {
+            return res.status(400).json({ message: "Password must be at least 6 characters long" });
+        }
+
+        // Update the user's password
+        user.password = password;  // In a real-world scenario, you should hash the password before saving
+        await user.save();
+
+        res.status(200).json({ message: "Password reset successful" });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};

@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const ProductRoutes = require('./routes/ProductRoutes');
 const UserRoutes = require('./routes/UserRoutes');
 const mainPage = require('./routes/mainPage'); 
+const dashboardRoutes = require('./routes/dashboardRoutes');
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,12 +25,15 @@ app.use(express.static('views'));
 app.use('/products', ProductRoutes);
 app.use('/users', UserRoutes);
 app.use('/', mainPage);
-
+app.use('/', dashboardRoutes);
 
 app.get('/home', (req, res) => {
   res.render('homePage');  // Render 'homePage.ejs' for customers
 });
 
+app.get('/customers-dashboard', (req, res) => {
+  res.render('customers-dashboard');  
+});
 
 // MongoDB connection
 mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")

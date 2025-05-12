@@ -96,7 +96,7 @@ signInForm.addEventListener("submit", async function (e) {
       if (result.role === "customer") {
         window.location.href = "/home";  // Redirect to customer home page
       } else if (result.role === "admin") {
-        window.location.href = "/admin-dashboard";  // Redirect to admin dashboard
+        window.location.href = "/customers-dashboard";  // Redirect to admin dashboard
       } else {
         alert("Unknown role. Please contact support.");
       }

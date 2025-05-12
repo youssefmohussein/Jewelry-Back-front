@@ -50,7 +50,7 @@ signUpForm.addEventListener("submit", async function (e) {
     const result = await response.text();
     alert(result);
     if (response.ok) {
-      container.classList.remove("active"); // go to login view
+      container.classList.remove("active"); // Go to login view
     }
   } catch (err) {
     console.error(err);
@@ -91,10 +91,12 @@ signInForm.addEventListener("submit", async function (e) {
 
     if (response.ok) {
       alert("Login successful!");
-      if (result.role === "admin") {
-        window.location.href = "../admin-dashboard/dashboard.html";
-      } else {
-        window.location.href = "../Home Page/homepage.html";
+      
+      // Redirect based on role after successful login
+      if (result.role === "customer") {
+        window.location.href = "/home";  // Redirect to customer home page
+      } else if (result.role === "admin") {
+        window.location.href = "/admin-dashboard";  // Redirect to admin dashboard
       }
     } else {
       alert(result.message || "Invalid credentials");

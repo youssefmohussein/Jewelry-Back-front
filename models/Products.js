@@ -28,14 +28,12 @@ const productManagementSchema = new mongoose.Schema({
     },
     Category: {
         type: String,
-        enum: ['Earrings', 'Bracelets & Bangles', 'Necklaces', 'Rings'],
         required: true 
     },
     Collection: {
         type: String,
-        enum: ['Minimal', 'Brocade', 'Asheville', 'Motif', 'none'],
-        default: 'none'
-    },
+        required: true
+        },
     Stock: {
         type: Number,
         required: true,

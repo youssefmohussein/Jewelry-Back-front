@@ -92,11 +92,13 @@ signInForm.addEventListener("submit", async function (e) {
     if (response.ok) {
       alert("Login successful!");
       
-      // Redirect based on role after successful login
+      // Check the role and redirect accordingly
       if (result.role === "customer") {
         window.location.href = "/home";  // Redirect to customer home page
       } else if (result.role === "admin") {
         window.location.href = "/admin-dashboard";  // Redirect to admin dashboard
+      } else {
+        alert("Unknown role. Please contact support.");
       }
     } else {
       alert(result.message || "Invalid credentials");
@@ -105,4 +107,5 @@ signInForm.addEventListener("submit", async function (e) {
     console.error(err);
     alert("An error occurred. Please try again.");
   }
+  
 });

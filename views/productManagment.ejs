@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Products | Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/admin.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <h2>Velora</h2>
+      <hr />
+      <ul>
+        <a href="/admin-dashboard/dashboard"><li>Dashboard</li></a>
+        <a href="/admin-dashboard/customers"><li>Customers</li></a>
+        <a href="/admin-dashboard/orders"><li>Orders</li></a>
+        <a href="/admin-dashboard/products"><li>Products</li></a>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="top">
+        <h1>Product Management</h1>
+      </div>
+
+      <div class="cards">
+        <div class="card1">
+          <h3>Total Products</h3>
+          <p>120</p>
+        </div>
+        <div class="card2">
+          <h3>Categories</h3>
+          <p>4</p>
+        </div>
+        <div class="card3">
+          <h3>New Arrivals</h3>
+          <p>5 This Week</p>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search products..."
+          onkeyup="searchTable()"
+        />
+        <select id="category-select">
+          <option>All Categories</option>
+          <!-- Categories will be populated dynamically -->
+        </select>
+      </div>
+
+      <!-- Add Collection Button -->
+      <div style="margin-bottom: 20px">
+        <button class="add-collection-btn" onclick="openForm()">
+          + Add Collection
+        </button>
+      </div>
+
+      <!-- Modal Form -->
+      <div id="collectionModal" class="modal">
+        <div class="modal-content">
+          <label for="collectionName">Collection Name</label>
+          <input type="text" id="collectionName" required />
+
+          <label for="collectionImage">Image URL</label>
+          <input type="text" id="collectionImage" required />
+
+          <button type="button" onclick="addCollection()">
+            Add Collection
+          </button>
+          <button type="button" onclick="closeForm()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/productManagment.js"></script>
+  </body>
+</html>

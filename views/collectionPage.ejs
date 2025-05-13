@@ -16,15 +16,20 @@
       <h1><%= collection.name %></h1>
     </div>
 
-    <div class="product-grid">
-      <% products.forEach(product => { %>
-      <div class="product">
-        <img src="<%= product.image %>" alt="<%= product.name %>" />
-        <p><%= product.name %></p>
-        <p>Price: $<%= product.price %></p>
-      </div>
+    <div class="product-table">
+  <% collections.forEach(c => { %>
+    <h2><%= c.name %></h2>
+    <div class="product-group">
+      <% products.filter(p => p.collection === c.name).forEach(product => { %>
+        <div class="product-card">
+          <h4><%= product.name %></h4>
+          <p>Price: $<%= product.price %></p>
+          <p>Stock: <%= product.stock %></p>
+        </div>
       <% }) %>
     </div>
+  <% }) %>
+</div>
     
     <%- include('partials/footer') %>
   </body>

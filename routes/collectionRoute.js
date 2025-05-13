@@ -22,14 +22,14 @@ router.get('/:name', async (req, res) => {
     // Find products in this collection
     const products = await Product.find({ Collection: name });
 
-    // ✅ Get all collections for the header menu
+    //  Get all collections for the header menu
     const collections = await Collection.find();
 
-    // ✅ Render the view with all necessary data
+    //  Render the view with all necessary data
     res.render('collectionPage', {
       collection,
       products,
-      collections // ✅ now header.ejs will work!
+      collections // now header.ejs will work!
     });
   } catch (error) {
     console.error('Error loading collection:', error);

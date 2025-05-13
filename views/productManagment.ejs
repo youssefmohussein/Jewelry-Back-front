@@ -53,10 +53,18 @@
       </div>
 
       <!-- Add Collection Button -->
+        <div class="buttons-container">
       <div style="margin-bottom: 20px">
         <button class="add-collection-btn" onclick="openForm()">
           + Add Collection
         </button>
+      </div>
+      <div style="margin-bottom: 20px;  ">
+        <button class="add-product-btn" onclick="openForm()">
+          + Add-product
+        </button>
+      </div>
+        </div>
       </div>
 
       <!-- Modal Form -->
@@ -67,14 +75,21 @@
 
           <label for="collectionImage">Image URL</label>
           <input type="text" id="collectionImage" required />
+         
 
           <button type="button" onclick="addCollection()">
             Add Collection
           </button>
           <button type="button" onclick="closeForm()">Close</button>
         </div>
+
       </div>
+       
+      
+      </div>
+
     </div>
+
 
     <script src="/js/productManagment.js"></script>
   </body>

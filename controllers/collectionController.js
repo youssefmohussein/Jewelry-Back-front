@@ -1,7 +1,7 @@
 const Collection = require('../models/collection');
 
 // Create a new collection
-// Create a new collection
+
 exports.createCollection = async (req, res) => {
   try {
     const { name, image } = req.body;

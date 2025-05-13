@@ -62,5 +62,6 @@ const productManagementSchema = new mongoose.Schema({
         min: 0,
         required: true 
     }
+  });
 const Product = mongoose.model('Product', ProductSchema);
 module.exports = Product;

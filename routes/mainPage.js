@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const collectionController = require('../controllers/collectionController');
+//const adminRoutes = require('./routes/adminRoutes');
 const Collection = require('../models/collection');
 
 // Homepage route

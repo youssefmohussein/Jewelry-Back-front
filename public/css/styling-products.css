@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.background-img {
+  margin-top: 81.99px;
+  position: relative;
+  height: auto;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  display: block;
+  margin-top: 0px;
+}
+
+.background-imgg img {
+  width: 100%;
+  height: 625px;
+  object-fit: cover;
+  display: block;
+}
+
+.background-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.background-text {
+  position: absolute;
+  top: 43%;
+  left: 51.1%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 36px;
+  font-family: 'SAOLDISPLAY-MEDIUM';
+  margin-right: 0px;
+}
+
+.text {
+  position: absolute;
+  top: 55%;
+  left: 51.5%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-family: 'SAOLDISPLAY-MEDIUM';
+  margin-right: 0px;
+  text-align: center;
+}
+
+.product-spacerow {
+  width: 100%;
+  padding-left: 34px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.product1-name,
+.product2-name,
+.product4-name,
+.product5-name {
+  font-size: 17px;
+  margin: auto;
+  font-weight: 500;
+  line-height: 20px;
+  color: black;
+  padding-left: 0px;
+  margin-left: 0px;
+  font-family: adobe-caslon-pro, sans-serif;
+
+}
+
+.product3-name {
+  font-size: 17px;
+  margin: auto;
+  font-weight: 500;
+  line-height: 20px;
+  color: black;
+  padding-left: 0px;
+  margin-left: 140px;
+  font-family: adobe-caslon-pro, sans-serif;
+}
+
+.product4-name {
+  padding-left: 50px;
+}
+
+
+.product-4 {
+  padding-left: 165px;
+}
+
+.product-price {
+  color: rgb(170, 170, 170);
+  padding-left: 165px;
+  text-decoration: none;
+}
+
+.product-price:hover {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+
+.product-preview {
+  width: 400px;
+  display: inline-block;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-1,
+.product-2,
+.product-3,
+.product-4,
+.product-5 {
+  padding-left: 0px;
+  width: 400px;
+  padding-right: 40px;
+  margin-right: 0%;
+}
+
+.product-info p {
+  width: 100%;
+  margin-left: 0px;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 40px;
+
+}
+
+.product-grid .product-spacerow {
+  padding-left: 70px;
+}
+
+
+

@@ -2,35 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= collection.name %> | Velora Jewel Paris</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/HeadFoot.css" />
+    <title><%= collection.name %> | Collection</title>
   </head>
-
   <body>
     <%- include('partials/header') %>
-
-    <div class="collection-header">
-      <img src="<%= collection.image %>" alt="<%= collection.name %> Image" />
-      <h1><%= collection.name %></h1>
-    </div>
-
-    <div class="product-table">
-  <% collections.forEach(c => { %>
-    <h2><%= c.name %></h2>
-    <div class="product-group">
-      <% products.filter(p => p.collection === c.name).forEach(product => { %>
-        <div class="product-card">
-          <h4><%= product.name %></h4>
-          <p>Price: $<%= product.price %></p>
-          <p>Stock: <%= product.stock %></p>
-        </div>
+    <img src="<%= collection.image %>" alt="<%= collection.name %> Image" />
+    <!-- Add products related to this collection if needed -->
+    <h3>Products</h3>
+    <% if (collection.products && collection.products.length > 0) { %>
+    <ul>
+      <% collection.products.forEach(product => { %>
+      <li><%= product.name %> - <%= product.price %></li>
       <% }) %>
-    </div>
-  <% }) %>
-</div>
-    
-    <%- include('partials/footer') %>
+    </ul>
+    <% } else { %>
+    <p>No products in this collection.</p>
+    <% } %> <%- include('partials/footer') %>
   </body>
 </html>

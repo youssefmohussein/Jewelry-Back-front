@@ -178,7 +178,11 @@
 .icons a {
     padding-left: 30px;
     font-size: 25px;
-    color: rgb(84, 80, 80);
+    color:  #b76e79;
+}
+
+.icons a:hover {
+    color: #a05566; /* darker shade on hover */
 }
 
 .content {

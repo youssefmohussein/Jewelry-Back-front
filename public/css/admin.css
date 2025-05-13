@@ -526,7 +526,8 @@ th, td {
 
 
 /* Add Collection Button */
-.add-collection-btn {
+.add-collection-btn, .add-product-btn {
+  display: inline-block;
   background-color: #6a5acd;
   color: white;
   padding: 10px 20px;
@@ -534,7 +535,16 @@ th, td {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  margin-right: 10px; 
 }
+
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Replaces margin-right for modern browsers */
+}
+
+
+
 
 .add-collection-btn:hover {
   background-color: #5940c3;

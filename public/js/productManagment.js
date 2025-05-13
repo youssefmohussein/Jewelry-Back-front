@@ -110,12 +110,37 @@ function openProductForm() {
     closeProductForm();
   }
 
-  function addCollection() {
-    const name = document.getElementById('collectionName').value.trim();
-    const image = document.getElementById('collectionImage').value.trim();
+// Add Collection function
+function addCollection() {
+  const name = document.getElementById('collectionName').value;
+  const image = document.getElementById('collectionImage').value;
 
-    // TODO: Send collection data to server
-    console.log({ name, image });
-
-    closeCollectionForm();
+  // Basic validation
+  if (!name || !image) {
+    alert('Please provide both Collection Name and Image URL.');
+    return;
   }
+
+  // Send POST request to the server
+  fetch('/admin/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, image })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message === 'Collection created successfully') {
+      alert('Collection added successfully!');
+      closeCollectionForm(); // Close modal after successful creation
+      // Optionally, refresh or update the page content
+    } else {
+      alert('Something went wrong. Try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Failed to add collection.');
+  });
+}

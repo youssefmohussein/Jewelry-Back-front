@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-//const adminRoutes = require('./routes/adminRoutes');
 const Collection = require('../models/collection');
 
 // Homepage route
@@ -14,48 +13,48 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-
+// Login route
 router.get('/login', (req, res) => {
-  res.render('login page'); 
+  res.render('login page');
 });
 
-router.get('/forgetpassword',(req,res)=>{
-
-    res.render('reset');
+// Forget password route
+router.get('/forgetpassword', (req, res) => {
+  res.render('reset');
 });
 
-router.get('/home', (req, res) => {
-  // Render the 'homePage' EJS file
-  res.render('homePage');  
-});
-
+// About Us page
 router.get('/about-us', async (req, res) => {
   try {
-    const collections = await Collection.find();  // Assuming you're fetching collections from the database
-    res.render('about', { collections });  // Pass collections to the 'about' view
+    const collections = await Collection.find();
+    res.render('about', { collections });
   } catch (error) {
     console.error('Error fetching collections:', error);
-    res.render('about', { collections: [] });  // If there's an error, pass an empty array
+    res.render('about', { collections: [] });
   }
 });
 
-
+// Admin dashboard product management route
 router.get('/admin-dashboard/products', (req, res) => {
   res.render('productManagment');
 });
 
-
-router.get('/', async (req, res) => {
+// View specific collection page (e.g., /collections/youssef)
+router.get('/collections/:collectionName', async (req, res) => {
+  const { collectionName } = req.params;
+  
   try {
-    const collections = await Collection.find({});
-    res.render('homePage', { collections });
+    const collection = await Collection.findOne({ name: collectionName });
+    const collections = await Collection.find();//header
+    if (collection) {
+      res.render('collectionPage', { collection, collections });
+    } else {
+      res.status(404).send('Collection not found');
+    }
   } catch (error) {
-    console.error('Error fetching collections:', error);
-    res.render('homePage', { collections: [] });
+    console.error('Error fetching collection:', error);
+    res.status(500).send('Server error');
   }
 });
-
-
 
 module.exports = router;

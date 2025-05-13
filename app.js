@@ -26,9 +26,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Route usage
 app.use('/', mainPageRoutes);
 app.use('/', dashboardRoutes);
-app.use('/admin', adminRoutes);  // admin routes under /admin
+app.use('/collections', adminRoutes);  // admin routes under /admin
+app.use('/admin', adminRoutes); 
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+
 
 // MongoDB connection
 mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/myDatabase?retryWrites=true&w=majority")

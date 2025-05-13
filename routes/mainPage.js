@@ -57,5 +57,5 @@ router.get('/', async (req, res) => {
 });
 
 
-// router.post("/create", collectionController.createCollection);
+
 module.exports = router;

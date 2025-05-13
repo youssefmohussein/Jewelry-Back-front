@@ -8,7 +8,8 @@ const port = process.env.PORT || 8000;
 // Routes
 const ProductRoutes = require('./routes/ProductRoutes');
 const UserRoutes = require('./routes/UserRoutes');
-const mainPage = require('./routes/mainPage');
+const mainPage = require('./routes/mainPage'); 
+const dashboardRoutes = require('./routes/dashboardRoutes');
 const collectionRoutes = require('./routes/collectionRoute');  // Fix: Correct variable name
 
 // Middleware
@@ -26,10 +27,17 @@ app.set('view engine', 'ejs');
 app.use('/products', ProductRoutes);
 app.use('/users', UserRoutes);
 app.use('/', mainPage);
+app.use('/', dashboardRoutes);
 app.use('/collections', collectionRoutes);  // Fix: Correct variable name
+
 
 app.get('/home', (req, res) => {
   res.render('homePage');
+});
+
+
+app.get('/customers-dashboard', (req, res) => {
+  res.render('customers-dashboard');  
 });
 
 // MongoDB connection

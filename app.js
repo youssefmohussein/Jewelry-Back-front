@@ -11,6 +11,7 @@ const UserRoutes = require('./routes/UserRoutes');
 const mainPage = require('./routes/mainPage'); 
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const collectionRoutes = require('./routes/collectionRoute');  // Fix: Correct variable name
+const adminRoutes = require('./routes/adminRoutes');
 
 // Middleware
 app.use(express.json()); 
@@ -27,8 +28,9 @@ app.set('view engine', 'ejs');
 app.use('/products', ProductRoutes);
 app.use('/users', UserRoutes);
 app.use('/', mainPage);
-app.use('/', dashboardRoutes);
-app.use('/collections', collectionRoutes);  // Fix: Correct variable name
+app.use('/', dashboardRoutes);  // Fix: Correct variable name
+app.use('/', adminRoutes);
+
 
 
 app.get('/home', (req, res) => {

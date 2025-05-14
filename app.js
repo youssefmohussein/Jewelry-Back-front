@@ -7,7 +7,7 @@ const port = process.env.PORT || 8000;
 
 // Routes
 const productRoutes = require('./routes/productRoutes');
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/UserRoutes');
 const mainPageRoutes = require('./routes/mainPage');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const adminRoutes = require('./routes/adminRoutes');

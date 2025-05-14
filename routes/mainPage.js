@@ -13,6 +13,17 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Homepage route
+router.get('/home', async (req, res) => {
+  try {
+    const collections = await Collection.find();
+    res.render('homePage', { collections });
+  } catch (error) {
+    console.error('Error fetching collections:', error);
+    res.render('homePage', { collections: [] });
+  }
+});
+
 // Login route
 router.get('/login', (req, res) => {
   res.render('login page');

@@ -4,10 +4,12 @@ const User = require('../models/users');
 // Create
 exports.createUsers = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ Id: req.body.Id });
+    const existingUser = await User.findOne({ Email: req.body.Email });
     if (existingUser) {
-      return res.status(400).json({ error: 'User with this Id already exists' });
-    }
+      return res.status(400).json({ error: 'User with this Email already exists' });
+    } 
+
+    // Create new user without setting an 'Id' since MongoDB will handle the '_id'
     const newUser = new User(req.body);
     await newUser.save();
     res.status(200).json(newUser);
@@ -15,6 +17,7 @@ exports.createUsers = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
 
 exports.registerUser = async (req, res) => {
   try {
@@ -60,7 +63,7 @@ exports.loginUser = async (req, res) => {
 exports.updateUsers = async (req, res) => {
   try {
     const updatedUser = await User.findOneAndUpdate(
-      { Id: Number(req.params.id) },
+      { Email: Number(req.params.Email) },
       req.body,
       { new: true }
     );
@@ -76,7 +79,7 @@ exports.updateUsers = async (req, res) => {
 // Get by ID
 exports.getUsersById = async (req, res) => {
   try {
-    const user = await User.findOne({ Id: Number(req.params.id) });
+    const user = await User.findOne({ Email: Number(req.params.Email) });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -99,7 +102,7 @@ exports.getAllusers = async (req, res) => {
 // Delete
 exports.deleteUsers = async (req, res) => {
   try {
-    const deletedUser = await User.findOneAndDelete({ Id: Number(req.params.id) });
+    const deletedUser = await User.findOneAndDelete({ Email: Number(req.params.Email) });
     if (!deletedUser) {
       return res.status(404).json({ message: 'User not found' });
     }

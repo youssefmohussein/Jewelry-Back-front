@@ -44,7 +44,7 @@
     font-family: 'Cormorant Garamond', serif;
     text-decoration: none;
     padding: 10px 20px;
-    color: #b76e79;
+    color: rgb(9, 9, 9);
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -62,7 +62,7 @@
 .dropdown>a {
     font-family: 'Cormorant Garamond', serif;
     text-decoration: none;
-    color: #b76e79;
+    color: rgb(9, 9, 9);
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -75,7 +75,7 @@
 
 .dropdown>a:hover {
     background-color: #f0f0f0;
-    color: #b76e79;
+    color: rgb(9, 9, 9);
 }
 
 /* Dropdown Content */
@@ -132,7 +132,7 @@
     display: block;
     font-family: 'Cormorant Garamond', serif;
     text-decoration: none;
-    color: #b76e79;
+    color: rgb(9, 9, 9);
     font-size: 14px;
     padding: 8px 0;
     transition: color 0.3s;
@@ -141,33 +141,33 @@
 }
 
 .mega-menu-column a:hover {
-    color: #a05566;
+    color: rgb(9, 9, 9);
     background-color: transparent;
 }
 
 .logo h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family:'Times New Roman', Times, serif;
     text-transform: uppercase;
     font-weight: 500;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
     padding-right: 70px;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     word-spacing: 10px;
     margin-right: 120px;
-    color: #b76e79;
-    text-shadow: 1px 1px 3px #b76e79;
+    color: rgb(9, 9, 9);
+    /* text-shadow: 1px 1px 3px rgb(9, 9, 9); */
 }
 
 .logo h2 {
-    font-family: 'SAOLDISPLAY-MEDIUM';
+    font-family:'Times New Roman', Times, serif;
     font-weight: lighter;
     text-align: center;
     font-size: 25px;
     letter-spacing: 2px;
-    color: #b76e79;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    padding-right: 70px;
+    color: rgb(9, 9, 9);
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); */
+    padding-right: 60px;
     margin-right: 110px;
 }
 
@@ -178,11 +178,11 @@
 .icons a {
     padding-left: 30px;
     font-size: 25px;
-    color:  #b76e79;
+    color:  rgb(9, 9, 9);
 }
 
 .icons a:hover {
-    color: #a05566; /* darker shade on hover */
+    color: rgb(9, 9, 9); /* darker shade on hover */
 }
 
 .content {
@@ -221,7 +221,7 @@ footer {
 
 .heritage .logo {
     font-size: 36px;
-    color: #b55f6c;
+    color: white;
 }
 
 .brand {
@@ -237,7 +237,7 @@ footer {
 }
 
 .separator span {
-    color: #b76e79;
+    color: white;
     font-size: 12px;
     display: inline-block;
     position: relative;
@@ -251,7 +251,7 @@ footer {
     top: 50%;
     width: 100px;
     height: 1px;
-    background: #b76e79;
+    background: white;
 }
 
 .separator span::before {
@@ -293,7 +293,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #b76e79;
+    color: rgb(9, 9, 9);
 }
 
 .newsletter-form input,
@@ -301,20 +301,20 @@ footer {
     width: 100%;
     padding: 12px;
     font-family: inherit;
-    border: 1px solid #b76e79;
+    border: 1px solid rgb(9, 9, 9);
     background: transparent;
     color: white;
 }
 
 .newsletter-form button {
-    background: #b76e79;
+    background: rgb(9, 9, 9);
     border: none;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .newsletter-form button:hover {
-    background: #b76e79;
+    background: rgb(9, 9, 9);
 }
 
 .footer-bottom {

@@ -28,7 +28,7 @@ router.get('/about-us', async (req, res) => {
   try {
     const collections = await Collection.find();
     res.render('about', { collections });
-  } catch (error) {
+  } catch (error) {  
     console.error('Error fetching collections:', error);
     res.render('about', { collections: [] });
   }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/users');
+const bcrypt = require('bcryptjs');
 
 // Create
 exports.createUsers = async (req, res) => {
@@ -142,3 +143,4 @@ exports.resetPassword = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+

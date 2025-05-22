@@ -1,51 +1,46 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
 body {
-  background: #f9f9f9;
-  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-header {
+.topbar {
   background: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 15px 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 40px;
 }
 
-.header-content {
+.topbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-weight: bold;
+.brand {
   font-size: 20px;
+  font-weight: 500;
 }
 
 .logout {
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-main h1 {
-  font-size: 28px;
-  margin-top: 20px;
+.main-content {
+  padding: 40px;
+}
+
+h1 {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .welcome {
-  margin-bottom: 30px;
-  color: #666;
+  margin: 10px 0 30px;
+  color: #6b7280;
 }
 
 .dashboard {
@@ -54,77 +49,110 @@ main h1 {
   flex-wrap: wrap;
 }
 
-.orders, .email {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  flex: 1;
-  min-width: 300px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+.view-all-btn {
+  background-color: transparent;
+  color: #111827;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.section-header {
+.view-all-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.orders-section, .email-section {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  padding: 30px;
+  flex: 1;
+  min-width: 350px;
+}
+
+.orders-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.order-box {
-  text-align: center;
-  padding: 30px 0;
-}
-
-.clock-icon {
-  font-size: 40px;
-  margin-bottom: 10px;
-  color: #888;
-}
-
-.order-box p {
-  color: #555;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
-.order-box button, .edit-btn {
+.orders-box {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.order-icon {
+  font-size: 40px;
+  color: #6b7280;
+  margin-bottom: 10px;
+  
+}
+
+.order-status p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.browse-btn {
+  background-color: #111827;
+  color: white;
   padding: 10px 20px;
-  background: #222;
-  color: #fff;
+
   border: none;
-  border-radius: 5px;
+
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.edit-btn {
+.email-header {
+  font-weight: 600;
   display: block;
+  margin-bottom: 20px;
+}
+
+.email-details p {
+  margin: 5px 0;
+}
+
+.email-address {
+  color: #6b7280;
+}
+
+.edit-btn {
   margin-top: 20px;
   width: 100%;
-  background: #fff;
-  color: #000;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  background: white;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.email-text {
-  color: #888;
-}
-
-footer {
-  margin-top: 40px;
-  background: #fff;
-  padding: 20px 0;
-  border-top: 1px solid #ddd;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.footer {
+  text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  padding: 20px;
+  margin-top: 40px;
+
+}
+
+.footer-links {
+  margin-top: 5px;
 }
 
 .footer-links a {
-  margin-left: 15px;
+  color: #6b7280;
+  margin: 0 10px;
   text-decoration: none;
-  color: #666;
+
 }
+

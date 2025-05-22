@@ -45,14 +45,18 @@ exports.loginUser = async (req, res) => {
     const { Email, password } = req.body;
     const user = await User.findOne({ Email });
 
-    if (!user || user.password !== password) {
+    if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Send the user's role along with a success message
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
     res.status(200).json({
       message: "Login successful!",
-      role: user.Role // Make sure the 'role' is sent as part of the response
+      role: user.Role
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -114,33 +118,31 @@ exports.deleteUsers = async (req, res) => {
 };
 
 exports.resetPassword = async (req, res) => {
-    try {
-        const { Email, password, confirmPassword } = req.body;
+  try {
+    const { Email, password, confirmPassword } = req.body;
 
-        // Check if email exists in the database
-        const user = await User.findOne({ Email });
-        if (!user) {
-            return res.status(404).json({ message: "User with this email not found" });
-        }
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            return res.status(400).json({ message: "Passwords do not match" });
-        }
-
-        // Validate password (simple check for 6 characters or more)
-        const isValidPassword = password.length >= 6;
-        if (!isValidPassword) {
-            return res.status(400).json({ message: "Password must be at least 6 characters long" });
-        }
-
-        // Update the user's password
-        user.password = password;  // In a real-world scenario, you should hash the password before saving
-        await user.save();
-
-        res.status(200).json({ message: "Password reset successful" });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+    const user = await User.findOne({ Email });
+    if (!user) {
+      return res.status(404).json({ message: "User with this email not found" });
     }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+
+    await user.save();
+    res.status(200).json({ message: "Password reset successful" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
+
 

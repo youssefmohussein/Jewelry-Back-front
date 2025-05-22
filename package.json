@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/youssefmohussein/Jewelry-Back-front#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "bootstrap": "^5.3.6",
     "ejs": "^3.1.10",
     "express": "^5.1.0",

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const usersManagementSchema = new mongoose.Schema({
   name: {
@@ -40,6 +41,8 @@ const usersManagementSchema = new mongoose.Schema({
     required: false,
   },
 });
+
+
 
 const users = mongoose.model('users', usersManagementSchema);
 module.exports = users;

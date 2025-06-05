@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 const User = require('../models/users');
+const bcrypt = require('bcryptjs');
 
 // Create
 exports.createUsers = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ Id: req.body.Id });
+    const existingUser = await User.findOne({ Email: req.body.Email });
     if (existingUser) {
-      return res.status(400).json({ error: 'User with this Id already exists' });
-    }
+      return res.status(400).json({ error: 'User with this Email already exists' });
+    } 
+
+    // Create new user without setting an 'Id' since MongoDB will handle the '_id'
     const newUser = new User(req.body);
     await newUser.save();
     res.status(200).json(newUser);
@@ -15,6 +18,7 @@ exports.createUsers = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
 
 exports.registerUser = async (req, res) => {
   try {
@@ -41,14 +45,18 @@ exports.loginUser = async (req, res) => {
     const { Email, password } = req.body;
     const user = await User.findOne({ Email });
 
-    if (!user || user.password !== password) {
+    if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Send the user's role along with a success message
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
     res.status(200).json({
       message: "Login successful!",
-      role: user.Role // Make sure the 'role' is sent as part of the response
+      role: user.Role
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -60,7 +68,7 @@ exports.loginUser = async (req, res) => {
 exports.updateUsers = async (req, res) => {
   try {
     const updatedUser = await User.findOneAndUpdate(
-      { Id: Number(req.params.id) },
+      { Email: Number(req.params.Email) },
       req.body,
       { new: true }
     );
@@ -76,7 +84,7 @@ exports.updateUsers = async (req, res) => {
 // Get by ID
 exports.getUsersById = async (req, res) => {
   try {
-    const user = await User.findOne({ Id: Number(req.params.id) });
+    const user = await User.findOne({ Email: Number(req.params.Email) });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -99,7 +107,7 @@ exports.getAllusers = async (req, res) => {
 // Delete
 exports.deleteUsers = async (req, res) => {
   try {
-    const deletedUser = await User.findOneAndDelete({ Id: Number(req.params.id) });
+    const deletedUser = await User.findOneAndDelete({ Email: Number(req.params.Email) });
     if (!deletedUser) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -110,32 +118,31 @@ exports.deleteUsers = async (req, res) => {
 };
 
 exports.resetPassword = async (req, res) => {
-    try {
-        const { Email, password, confirmPassword } = req.body;
+  try {
+    const { Email, password, confirmPassword } = req.body;
 
-        // Check if email exists in the database
-        const user = await User.findOne({ Email });
-        if (!user) {
-            return res.status(404).json({ message: "User with this email not found" });
-        }
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            return res.status(400).json({ message: "Passwords do not match" });
-        }
-
-        // Validate password (simple check for 6 characters or more)
-        const isValidPassword = password.length >= 6;
-        if (!isValidPassword) {
-            return res.status(400).json({ message: "Password must be at least 6 characters long" });
-        }
-
-        // Update the user's password
-        user.password = password;  // In a real-world scenario, you should hash the password before saving
-        await user.save();
-
-        res.status(200).json({ message: "Password reset successful" });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+    const user = await User.findOne({ Email });
+    if (!user) {
+      return res.status(404).json({ message: "User with this email not found" });
     }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+
+    await user.save();
+    res.status(200).json({ message: "Password reset successful" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
+
+

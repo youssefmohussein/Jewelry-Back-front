@@ -78,37 +78,6 @@ function openProductForm() {
     }
   }
 
-  async function addProduct() {
-    // Collect and validate input values here
-    const product = {
-      id: document.getElementById('productId').value.trim(),
-      name: document.getElementById('productName').value.trim(),
-      description: document.getElementById('description').value.trim(),
-      colors: document.getElementById('colors').value.trim().split(','),
-      category: document.getElementById('category').value.trim(),
-      collection: document.getElementById('collection').value.trim(),
-      stock: parseInt(document.getElementById('stock').value),
-      price: parseFloat(document.getElementById('price').value),
-      imageUrls: document.getElementById('imageUrls').value.trim().split(',')
-    };
-      const response = await fetch('/products/create', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(product)
-  });
-    if (response.ok) {
-    alert("Product added!");
-    closeProductForm();
-  } else {
-    alert("Failed to add product.");
-  }
-
-
-    // TODO: Send `product` to server via AJAX or form submit
-
-    console.log(product); // Debug
-    closeProductForm();
-  }
 
 // Add Collection function
 function addCollection() {
@@ -143,4 +112,39 @@ function addCollection() {
     console.error('Error:', error);
     alert('Failed to add collection.');
   });
+}
+ // add product
+ async function addProduct() {
+  const product = {
+    Id: document.getElementById('productId').value.trim().toUpperCase(),
+    Name: document.getElementById('productName').value.trim(),
+    Description: document.getElementById('description').value.trim(),
+    Colors: document.getElementById('colors').value.trim().split(',').map(c => c.trim()),
+    Category: document.getElementById('category').value.trim(),
+    Collection: document.getElementById('collection').value.trim(),
+    Stock: parseInt(document.getElementById('stock').value),
+    Price: parseFloat(document.getElementById('price').value),
+    Image: document.getElementById('imageUrls').value.trim().split(',').map(url => url.trim()),
+    TotalSales: 0
+  };
+
+  try {
+    const response = await fetch('/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(product)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Product added successfully!");
+      closeProductForm();
+    } else {
+      alert(`Failed to add product: ${result.error || result.message || 'Unknown error'}`);
+    }
+  } catch (err) {
+    console.error("Error submitting product:", err);
+    alert("An error occurred while adding the product.");
+  }
 }

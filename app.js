@@ -11,6 +11,7 @@ const userRoutes = require('./routes/UserRoutes');
 const mainPageRoutes = require('./routes/mainPage');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 // Middleware
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/collections', adminRoutes);  // admin routes under /admin
 app.use('/admin', adminRoutes); 
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
+app.use('/orders', orderRoutes);
 
 
 // MongoDB connection

@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 8000;
+const cors = require('cors');
+
 
 // Routes
 const productRoutes = require('./routes/productRoutes');
@@ -11,12 +13,14 @@ const userRoutes = require('./routes/UserRoutes');
 const mainPageRoutes = require('./routes/mainPage');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // Views and static files
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +34,7 @@ app.use('/collections', adminRoutes);  // admin routes under /admin
 app.use('/admin', adminRoutes); 
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
-
+app.use('/cart', cartRoutes);
 
 // MongoDB connection
 mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaeee.mongodb.net/myDatabase?retryWrites=true&w=majority")
@@ -40,3 +44,5 @@ mongoose.connect("mongodb+srv://youssefsessions:6FSwstyc88Zzyt1p@cluster0.wiyaee
     });
   })
   .catch(err => console.error('MongoDB connection error:', err));
+
+
